@@ -56,7 +56,7 @@ public class AddressActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
-
+        //this is some comment by AbbasHassan
         tilAddress = findViewById(R.id.til_address);
         tilContact = findViewById(R.id.til_phone);
         spCity = findViewById(R.id.sp_city);
