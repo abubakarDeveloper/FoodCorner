@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "215372077437",
+    "firebase_url": "https://myapp-8dbf0.firebaseio.com",
+    "project_id": "myapp-8dbf0",
+    "storage_bucket": "myapp-8dbf0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215372077437:android:fd88077f97d4e462",
+        "android_client_info": {
+          "package_name": "ab_developer.com.foodcorner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215372077437-kqkepboo5rpsbl6lue9ohlsmo0chuohu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCO8zUiFGnXosJlfSiF1FzHmH3X38SWyFM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215372077437-kqkepboo5rpsbl6lue9ohlsmo0chuohu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

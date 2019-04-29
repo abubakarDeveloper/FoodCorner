@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RateActivity"
+    android:orientation="vertical"
+    android:padding="2dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/tv_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Rate Us!"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:layout_margin="22dp"/>
+        <me.zhanghai.android.materialratingbar.MaterialRatingBar
+            android:id="@+id/mrb_rating"
+            android:layout_gravity="center"
+            android:stepSize="0.1"
+            android:rating="4.3"
+            app:mrb_fillBackgroundStars="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialRatingBar.RatingBar" />
+        <Button
+            android:id="@+id/btn_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:background="@color/colorPrimary"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:padding="4dp"
+            android:layout_margin="4dp"/>
+    </LinearLayout>
+</FrameLayout>

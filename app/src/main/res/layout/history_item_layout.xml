@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<!--
+
+        <ImageView
+            android:id="@+id/iv_product_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:visibility="invisible"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_product_image"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="4dp"
+            android:visibility="invisible"
+            android:fontFamily="cursive"
+            android:padding="2dp"
+            android:text="User Name"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+-->
+
+        <TextView
+            android:id="@+id/tv_product_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_user_name"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="4dp"
+            android:fontFamily="cursive"
+            android:padding="2dp"
+            android:text="Product Name"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_product_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_product_name"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="4dp"
+            android:fontFamily="cursive"
+            android:padding="2dp"
+            android:text="5677"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tv_product_price"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="4dp"
+            android:fontFamily="cursive"
+            android:padding="2dp"
+            android:text="Quantity"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_total_bill"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tv_quantity"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="4dp"
+            android:fontFamily="cursive"
+            android:padding="2dp"
+            android:text="Total Bill"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</LinearLayout>

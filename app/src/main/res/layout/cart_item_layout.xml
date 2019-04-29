@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+<com.itjinks.swipetoshow.SwipeHolder
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+    &lt;!&ndash; hide content must inside this layout &ndash;&gt;
+    <com.itjinks.swipetoshow.HideContentHolder
+        android:layout_width="74.5dp"
+        android:layout_height="match_parent">
+        &lt;!&ndash; you can put anything here to let it show when swipe left,
+         note that HideContentHolder need a width to let SwipeHolder know how big your view wanna be.
+         this hideItem onClick event is notifed in SwipeOnItemTouchAdapter when you register it in
+         RecyclerView.addOnItemTouchListener.
+         &ndash;&gt;
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FF3B30"
+            android:gravity="center"
+            android:text="delete"
+            android:textColor="#ffffff" />
+    </com.itjinks.swipetoshow.HideContentHolder>
+-->
+
+    <!-- anything you like to show -->
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="12dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp">
+
+        <TextView
+            android:id="@+id/tv_product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/quantity_layout"
+            android:text="Product Name"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_product_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_product_name"
+            android:text="Per Unit: Rs. 480" />
+        <TextView
+            android:id="@+id/rd_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Small"
+            android:layout_margin="8dp"
+            android:layout_below="@+id/tv_product_price"
+            />
+        <TextView
+            android:id="@+id/tv_petty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PETTY"
+            android:layout_below="@+id/rd_size"/>
+        <TextView
+            android:id="@+id/tv_bottle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PETTY"
+            android:layout_below="@+id/tv_petty"/>
+        <TextView
+            android:id="@+id/tv_combo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="COMBO"
+            android:layout_below="@+id/tv_bottle" />
+        <TextView
+            android:id="@+id/tv_remove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Remove"
+            android:textColor="#c70101"
+            android:layout_below="@+id/tv_combo"/>
+
+        <LinearLayout
+            android:id="@+id/quantity_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_product_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="6dp"
+                android:text="Rs. 260"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tv_product_price">
+
+                <Button
+                    android:id="@+id/btn_remove"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/btn_remove_bg"
+                    android:padding="0dp"
+                    android:text="-"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tv_quantity"
+                    android:layout_width="42dp"
+                    android:layout_height="28dp"
+                    android:layout_toRightOf="@id/btn_remove"
+                    android:background="#afafaf"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_add"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_toRightOf="@id/tv_quantity"
+                    android:background="@drawable/btn_add_bg"
+                    android:padding="0dp"
+                    android:text="+"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>
+<!--
+</com.itjinks.swipetoshow.SwipeHolder>-->
