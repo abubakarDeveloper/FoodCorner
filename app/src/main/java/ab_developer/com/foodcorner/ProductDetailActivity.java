@@ -211,6 +211,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                
                 int qty = Integer.parseInt(tvQuantity.getText().toString());
                 size = "";
                 rdPrice = 0;
