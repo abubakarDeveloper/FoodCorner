@@ -294,14 +294,13 @@ public class MainActivity extends AppCompatActivity
                     if (adapter != null) {
                         count = adapter.getItemCount();
 
-                        /*
                         if (count % 2 == 0) {
                             GridLayoutManager manager = new GridLayoutManager(MainActivity.this, 2);
                             rvCategories.setLayoutManager(manager);
                         } else {
                             LinearLayoutManager manager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false);
                             rvCategories.setLayoutManager(manager);
-                        }*/
+                        }
                     }
 
                     rvCategories.setAdapter(adapter);

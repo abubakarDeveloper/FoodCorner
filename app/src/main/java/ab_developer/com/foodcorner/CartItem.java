@@ -12,4 +12,5 @@ public class CartItem {
     int petty_price;
     String combo;
     int combo_price;
+    int cartId;
 }

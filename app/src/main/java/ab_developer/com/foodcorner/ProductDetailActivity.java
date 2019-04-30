@@ -228,6 +228,9 @@ public class ProductDetailActivity extends AppCompatActivity {
                     Toast.makeText(ProductDetailActivity.this, "Small", Toast.LENGTH_LONG).show();
                     size = "Small";
                     rdPrice = (int) 0.50;
+                }else{
+                    size = "false";
+                    rdPrice = 1;
                 }
 
                 choosePetty = "";
@@ -239,6 +242,9 @@ public class ProductDetailActivity extends AppCompatActivity {
                 }else if(rdoDoublePetty.isChecked()){
                     choosePetty = rdoDoublePetty.getText().toString();
                     pettyPrice = 150;
+                }else{
+                    choosePetty = "false";
+                    pettyPrice = 1;
                 }
 
                 bottleName = "";
@@ -252,23 +258,32 @@ public class ProductDetailActivity extends AppCompatActivity {
                 }else if(cbFanta.isChecked()){
                     bottleName = cbFanta.getText().toString();
                     bottlePrice = 30;
+                }else{
+                    bottleName = "false";
+                    bottlePrice = 1;
                 }
 
                 comboName = "";
                 comboPrice = 0;
-                if(cbPlaneFries.isChecked()){
-                    comboName =  cbPlaneFries.getText().toString();
-                    comboPrice = 120;
-                }else if(cbOnionRings.isChecked()){
-                    comboName = cbOnionRings.getText().toString();
-                    comboPrice = 140;
-                }else if(cbCurlyFries.isChecked()){
-                    comboName = cbCurlyFries.getText().toString();
-                    comboPrice = 170;
-                }
-                if(cbWithCombo.isChecked()){
-                 //   rlComboOption.setVisibility(View.VISIBLE);
 
+                if(cbWithCombo.isChecked()){
+                    //   rlComboOption.setVisibility(View.VISIBLE);
+                    comboName = "false";
+                    comboPrice = 1;
+                }else {
+                    if (cbPlaneFries.isChecked()) {
+                        comboName = cbPlaneFries.getText().toString();
+                        comboPrice = 120;
+                    } else if (cbOnionRings.isChecked()) {
+                        comboName = cbOnionRings.getText().toString();
+                        comboPrice = 140;
+                    } else if (cbCurlyFries.isChecked()) {
+                        comboName = cbCurlyFries.getText().toString();
+                        comboPrice = 170;
+                    }else{
+                        comboName = "false";
+                        comboPrice = 1;
+                    }
                 }
 /*
                 int meat_quantity = Integer.parseInt(tvMeat.getText().toString());
