@@ -1,560 +1,309 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#efefef"
     tools:context=".ProductDetailActivity">
 
-    <ImageView
-        android:id="@+id/iv_product_image"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop"
-        android:paddingRight="10dp"
-        android:src="@mipmap/ic_launcher"/>
-    <yanzhikai.textpath.SyncTextPathView
-        android:id="@+id/stpv_2017"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:duration="12000"
-        app:showPainter="true"
-        app:text="Meta Text Helper"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        app:textInCenter="true"
-        app:textSize="60sp"
-        app:repeat="REVERSE"
-        app:autoStart="true"
-        android:layout_weight="0"
-        />
-        <TextView
-            android:id="@+id/tv_product_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Product Name"
-            android:layout_marginLeft="6dp"
-            android:textSize="18sp"
-            android:maxLines="2"
-            android:layout_below="@id/iv_product_image"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/tv_product_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:text="Rs. 300"
-            android:textColor="#e83232"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="16dp"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/iv_product_image"/>
-
-    <TextView
-        android:id="@+id/tv_product_desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="some description Ofnnewnf,snf,sdmf,sdmf,sdfnmdsnfmsdn
-        fmsdf,sdmf,dmfsmfmsfmsdmf,smf,smfmsfvmdv,mdn,mnsdmn,sdmnf,msdffsfsd"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
-        android:padding="4dp"
-        android:textColor="#ffffff"
-        android:layout_below="@+id/tv_product_price"
-        android:lineSpacingExtra="2dp"/>
-    <RelativeLayout
-        android:id="@+id/ll_radio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        android:layout_below="@id/tv_product_desc">
-
-        <TextView
-            android:id="@+id/tv_size"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Size"
-            android:textColor="@color/colorAccent"
-            android:textSize="18sp"
-            android:layout_marginBottom="10dp"
-            android:layout_alignParentLeft="true"/>
-
-        <RadioGroup
-            android:id="@+id/rg_payment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:layout_toRightOf="@+id/tv_size">
-
-
-            <RadioButton
-                android:id="@+id/rdo_cod"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Large"
-                android:textSize="14sp" />
-
-            <RadioButton
-                android:id="@+id/rdo_jazzcash"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Medium"
-                android:textSize="14sp" />
-
-            <RadioButton
-                android:id="@+id/rdo_easypaisa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Small"
-                android:textSize="14sp" />
-        </RadioGroup>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/ll_option"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="10dp"
-        android:layout_below="@id/ll_radio">
+        android:padding="16dp">
 
-        <TextView
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Chooese Petty:"
-            android:textColor="@color/colorAccent"
-            android:layout_marginBottom="10dp"
-            android:textSize="18sp" />
+            android:layout_height="wrap_content">
 
-        <RadioGroup
-            android:id="@+id/rg_option"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp">
-
-
-            <RadioButton
-                android:id="@+id/rdo_single_petty"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Single Petty"
-                android:textSize="14sp" />
+                android:orientation="vertical">
 
-            <RadioButton
-                android:id="@+id/rdo_double_petty"
+                <TextView
+                    android:id="@+id/tv_product_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_product_image"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:maxLines="2"
+                    android:text="Product Name"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_product_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:text="Rs. 300"
+                    android:textColor="#e83232"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iv_product_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_margin="16dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/ic_launcher" />
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="4dp"
+                    android:clipToPadding="false"
+                    android:padding="16dp">
+
+                    <ImageButton
+                        android:id="@+id/btn_remove"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/minus_btn_bg"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:padding="0dp"
+                        android:src="@drawable/ic_remove_white_24dp"
+                        android:text="-"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/tv_quantity"
+                        android:layout_width="64dp"
+                        android:layout_height="38dp"
+                        android:layout_toRightOf="@+id/btn_remove"
+                        android:background="#dadada"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/btn_add"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginRight="12dp"
+                        android:layout_toEndOf="@+id/tv_quantity"
+                        android:layout_toRightOf="@+id/tv_quantity"
+                        android:background="@drawable/plus_btn_bg"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:padding="0dp"
+                        android:src="@drawable/ic_add_white_24dp"
+                        android:text="+"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btn_add_to_cart"
+                        android:layout_width="match_parent"
+                        android:layout_height="38dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_toRightOf="@id/btn_add"
+                        android:background="@drawable/add_to_cart_btn_bg"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="Add To My Order"
+                        android:textColor="#653210" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:contentPadding="16dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Double Petty"
-                android:textSize="14sp" />
-        </RadioGroup>
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/rl_bottle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ll_option">
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginBottom="10dp"
+                    android:text="Meal Size"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+
+                <RadioGroup
+                    android:id="@+id/rg_payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_size">
+
+                    <RadioButton
+                        android:id="@+id/rdo_cod"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Large"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:id="@+id/rdo_jazzcash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Medium"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:id="@+id/rdo_easypaisa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Small"
+                        android:textSize="14sp" />
+                </RadioGroup>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="#bfbfbf" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Chooese Petty:"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+
+                <RadioGroup
+                    android:id="@+id/rg_option"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <RadioButton
+                        android:id="@+id/rdo_single_petty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Single Petty"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:id="@+id/rdo_double_petty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Double Petty"
+                        android:textSize="14sp" />
+                </RadioGroup>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="#bfbfbf" />
+
+                <CheckBox
+                    android:id="@+id/cb_with_combo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="With Combo" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Drink:"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+
                 <RadioGroup
                     android:id="@+id/rg_bottle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp">
+                    android:layout_height="wrap_content">
 
 
-                <RadioButton
-                    android:id="@+id/cb_coke"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Coke"/>
-                <RadioButton
-                    android:id="@+id/cb_pepsi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pepsi"/>
-
-                <RadioButton
-                    android:id="@+id/cb_fanta"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Fanta"/>
-                </RadioGroup>
-    </RelativeLayout>
-
-    <CheckBox
-        android:id="@+id/cb_with_combo"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/rl_bottle"
-        android:text="With Combo"
-        />
-    <RelativeLayout
-        android:id="@+id/rl_combo_option"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/cb_with_combo">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <RadioGroup
-                android:id="@+id/rg_combo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="8dp">
-
-
-                <RadioButton
-                    android:id="@+id/cb_onion_rings"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Onion Rings"/>
-                <RadioButton
-                    android:id="@+id/cb_plane_fries"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Plan Fries"/>
-
-                <RadioButton
-                    android:id="@+id/cb_curly_fries"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Curly Fries"/>
-            </RadioGroup>
-        </LinearLayout>
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/rl_quantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="4dp"
-        android:layout_below="@+id/rl_combo_option">
-        <Button
-            android:id="@+id/btn_remove"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:text="-"
-            android:minHeight="0dp"
-            android:minWidth="0dp"
-            android:padding="0dp"
-            android:background="#afafaf"
-            android:textSize="26sp"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/tv_quantity"
-            android:layout_width="60dp"
-            android:layout_height="48dp"
-            android:gravity="center"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:background="#dadada"
-            android:text="1"
-            android:layout_toRightOf="@+id/btn_remove"/>
-        <Button
-            android:id="@+id/btn_add"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:text="+"
-            android:minHeight="0dp"
-            android:minWidth="0dp"
-            android:padding="0dp"
-            android:background="#afafaf"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:layout_toRightOf="@+id/tv_quantity"/>
-<!--        <Button
-            android:id="@+id/btn_add_to_cart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add To Cart"
-            android:textAllCaps="false"
-            android:padding="0dp"
-            android:layout_toRightOf="@id/btn_add"
-            android:background="#edda06"/>-->
-        <Button
-            android:id="@+id/btn_add_to_cart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add To Cart"
-            android:textAllCaps="false"
-            android:padding="2dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_toRightOf="@id/btn_add"
-            android:background="@color/colorPrimary"/>
-
-    </RelativeLayout>
-<!--    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rl_quantity"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal"
-        android:showDividers="middle|end"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="125dp"
-        android:id="@+id/radioGroup" >
-        <RadioButton
-            android:id="@+id/rb1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Small"
-            android:checked="false" />
-
-        <RadioButton
-            android:id="@+id/rb2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Medium"
-            android:checked="true" />
-
-        <RadioButton
-            android:id="@+id/rb3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Large"
-            android:checked="false" />
-    </RadioGroup>&ndash;&gt;
-!-->
-    <!--&lt;!&ndash; Code for Recipe Display accord to Hardees Menu&ndash;&gt;-->
-    <RelativeLayout
-        android:id="@+id/rl_extra"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="4dp"
-        android:layout_below="@+id/rl_quantity"
->
-    <TextView
-        android:id="@+id/tv_meat_tag"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Meat: "
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="2dp"
-        android:layout_toLeftOf="@id/rl_meat" />
-    <RelativeLayout
-        android:id="@+id/rl_meat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="6dp">
-        <Button
-            android:id="@+id/btn_remove_meat"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:background="@drawable/btn_remove_bg"
-            android:padding="0dp"
-            android:text="-"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/tv_meat"
-            android:layout_width="42dp"
-            android:layout_height="28dp"
-            android:layout_toRightOf="@id/btn_remove_meat"
-            android:background="#afafaf"
-            android:gravity="center"
-            android:text="0"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
-        <Button
-            android:id="@+id/btn_add_meat"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:background="@drawable/btn_add_bg"
-            android:padding="0dp"
-            android:text="+"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_toRightOf="@+id/tv_meat"/>
-    </RelativeLayout>
-        <TextView
-            android:id="@+id/tv_mayo_tag"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Mayonees: "
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="2dp"
-            android:layout_below="@id/rl_meat"
-            android:layout_toLeftOf="@id/rl_mayo" />
-
-        <RelativeLayout
-                android:id="@+id/rl_mayo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="6dp"
-                android:layout_below="@id/rl_meat">
-
-                <Button
-                    android:id="@+id/btn_remove_mayo"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:background="@drawable/btn_remove_bg"
-                    android:padding="0dp"
-                    android:text="-"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-                <TextView
-                    android:id="@+id/tv_mayo"
-                    android:layout_width="42dp"
-                    android:layout_height="28dp"
-                    android:layout_toRightOf="@id/btn_remove_mayo"
-                    android:background="#afafaf"
-                    android:gravity="center"
-                    android:text="0"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
-                <Button
-                    android:id="@+id/btn_add_mayo"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:background="@drawable/btn_add_bg"
-                    android:padding="0dp"
-                    android:text="+"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_toRightOf="@+id/tv_mayo"/>
-            </RelativeLayout>
-        <TextView
-            android:id="@+id/tv_sauce_tag"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sauce: "
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="2dp"
-            android:layout_below="@id/rl_mayo"
-            android:layout_toLeftOf="@id/rl_mayo" />
-
-        <RelativeLayout
-            android:id="@+id/rl_sauce"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="6dp"
-            android:layout_below="@id/rl_mayo">
-
-            <Button
-                android:id="@+id/btn_remove_sauce"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:background="@drawable/btn_remove_bg"
-                android:padding="0dp"
-                android:text="-"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/tv_sauce"
-                android:layout_width="42dp"
-                android:layout_height="28dp"
-                android:layout_toRightOf="@id/btn_remove_sauce"
-                android:background="#afafaf"
-                android:gravity="center"
-                android:text="0"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-            <Button
-                android:id="@+id/btn_add_sauce"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:background="@drawable/btn_add_bg"
-                android:padding="0dp"
-                android:text="+"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_toRightOf="@+id/tv_sauce"/>
-        </RelativeLayout>
-        <TextView
-            android:id="@+id/tv_pespi_tag"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pepsi: "
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="2dp"
-            android:layout_below="@id/rl_sauce"
-            android:layout_toLeftOf="@id/rl_pepsi" />
-
-        <RelativeLayout
-            android:id="@+id/rl_pepsi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="6dp"
-            android:layout_below="@id/rl_sauce">
-
-            <Button
-                android:id="@+id/btn_remove_pepsi"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:background="@drawable/btn_remove_bg"
-                android:padding="0dp"
-                android:text="-"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/tv_pepsi"
-                android:layout_width="42dp"
-                android:layout_height="28dp"
-                android:layout_toRightOf="@id/btn_remove_pepsi"
-                android:background="#afafaf"
-                android:gravity="center"
-                android:text="0"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-            <Button
-                android:id="@+id/btn_add_pepsi"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:background="@drawable/btn_add_bg"
-                android:padding="0dp"
-                android:text="+"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_toRightOf="@+id/tv_pepsi"/>
-        </RelativeLayout>
-    </RelativeLayout>
-<!--        <Button
-                        android:id="@+id/btn_add_to_cart_meat"
+                    <RadioButton
+                        android:id="@+id/cb_coke"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Add To Cart"
-                        android:textAllCaps="false"
-                        android:padding="0dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_toRightOf="@id/btn_add_meat"
-                        android:background="#edda06"/>-->
+                        android:text="Coke" />
 
-    </RelativeLayout>
+                    <RadioButton
+                        android:id="@+id/cb_pepsi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pepsi" />
+
+                    <RadioButton
+                        android:id="@+id/cb_fanta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fanta" />
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fries:"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+
+                <RadioGroup
+                    android:id="@+id/rg_combo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
 
+                    <RadioButton
+                        android:id="@+id/cb_onion_rings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Onion Rings" />
+
+                    <RadioButton
+                        android:id="@+id/cb_plane_fries"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Plan Fries" />
+
+                    <RadioButton
+                        android:id="@+id/cb_curly_fries"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Curly Fries" />
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_product_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_product_price"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:lineSpacingExtra="2dp"
+            android:padding="4dp"
+            android:text="some description Ofnnewnf,snf,sdmf,sdmf,sdfnmdsnfmsdn
+        fmsdf,sdmf,dmfsmfmsfmsdmf,smf,smfmsfvmdv,mdn,mnsdmn,sdmnf,msdffsfsd"
+            android:visibility="gone" />
+
+    </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

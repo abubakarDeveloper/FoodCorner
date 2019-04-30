@@ -1,11 +1,14 @@
 package ab_developer.com.foodcorner;
 
+import android.media.Image;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -25,32 +28,12 @@ public class ProductDetailActivity extends AppCompatActivity {
     TextView tvPrice;
     TextView tvDesc;
 
-    Button btnAdd;
-    Button btnRemove;
+    ImageButton btnAdd;
+    ImageButton btnRemove;
     TextView tvQuantity;
     Button btnAddToCart;
     Product selectedProduct;
     CartHelper cartHelper;
-
-    MaterialRatingBar mrbRating;
-    Button btnAddMeat;
-    Button btnRemoveMeat;
-    TextView tvMeat;
-    Button btnAddToCartMeat;
-    SessionHelper sessionHelper;
-    RadioGroup radioGroup;
-    RadioButton selectedRadioButton;
-
-
-    SyncTextPathView stpv_2017;
-    Integer meat_price;
-    Integer pepsi_price;
-    RelativeLayout rl_extra;
-
-    Button btnAddPepsi;
-    Button btnRemovePepsi;
-    TextView tvPepsi;
-    RecyclerView rvExtra;
 
     RadioButton rdoMedium, rdoSmall, rdoLarge, rdoCard;
     RadioGroup rgPayment;
@@ -61,7 +44,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     CheckBox cbWithCombo;
 
     RadioGroup rgBottle;
-    RadioButton  cbCoke, cbPepsi, cbFanta;
+    RadioButton cbCoke, cbPepsi, cbFanta;
 
     RadioGroup rlComboOption;
     RadioButton cbOnionRings, cbPlaneFries, cbCurlyFries;
@@ -76,10 +59,16 @@ public class ProductDetailActivity extends AppCompatActivity {
     int comboPrice = 0;
     String bottleName = "";
     int bottlePrice = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
+        }
+
         ivProductImage = findViewById(R.id.iv_product_image);
         tvName = findViewById(R.id.tv_product_name);
         tvPrice = findViewById(R.id.tv_product_price);
@@ -91,17 +80,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         btnAddToCart = findViewById(R.id.btn_add_to_cart);
         // mrbRating = findViewById(R.id.mrb_rating);
 
-        rl_extra = findViewById(R.id.rl_extra);
-        btnAddMeat = findViewById(R.id.btn_add_meat);
-        tvMeat = findViewById(R.id.tv_meat);
-        btnRemoveMeat = findViewById(R.id.btn_remove_meat);
-
-        btnAddPepsi = findViewById(R.id.btn_add_pepsi);
-        tvPepsi = findViewById(R.id.tv_pepsi);
-        btnRemovePepsi = findViewById(R.id.btn_remove_pepsi);
-       // rvExtra = findViewById(R.id.rv_extra);
-        stpv_2017 = findViewById(R.id.stpv_2017);
-        stpv_2017.startAnimation(1, 0);
+        // rvExtra = findViewById(R.id.rv_extra);
 
         rgPayment = findViewById(R.id.rg_payment);
         rdoLarge = findViewById(R.id.rdo_cod);
@@ -140,21 +119,11 @@ public class ProductDetailActivity extends AppCompatActivity {
         tvName.setText(selectedProduct.name);
         tvPrice.setText("Rs." + selectedProduct.price);
         tvDesc.setText(selectedProduct.desc);
-//        mrbRating.setRating(selectedProduct.pRating);
-
-/*
-        if (selectedProduct.catId == 2) {
-            rl_extra.setVisibility(View.VISIBLE);
-        } else {
-            rl_extra.setVisibility(View.INVISIBLE);
-        }
-*/
-
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int qty =  Integer.parseInt(tvQuantity.getText().toString());
+                int qty = Integer.parseInt(tvQuantity.getText().toString());
                 qty++;
                 tvQuantity.setText(String.valueOf(qty));
             }
@@ -164,54 +133,21 @@ public class ProductDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int qty = Integer.parseInt(tvQuantity.getText().toString());
-                if(qty > 1){
+                if (qty > 1) {
                     qty--;
                     tvQuantity.setText(String.valueOf(qty));
                 }
             }
         });
 //button coe for meat insertion
-        btnAddMeat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int qty = Integer.parseInt(tvMeat.getText().toString());
-                qty++;
-                tvMeat.setText(String.valueOf(qty));
-            }
-        });
 
-        btnRemoveMeat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int qty = Integer.parseInt(tvMeat.getText().toString());
-                if(qty > 0)
-                    qty--;
-                    tvMeat.setText(String.valueOf(qty));
-            }
-        });
-        btnAddPepsi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int pepsi_qty = Integer.parseInt(tvPepsi.getText().toString());
-                    pepsi_qty++;
-                    tvPepsi.setText(String.valueOf(pepsi_qty));
-            }
-        });
-        btnRemovePepsi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int pepsi_qty = Integer.parseInt(tvPepsi.getText().toString());
-                if(pepsi_qty > 0 )
-                    pepsi_qty--;
-                tvPepsi.setText(String.valueOf(pepsi_qty));
-            }
-        });
+
         cartHelper = new CartHelper(ProductDetailActivity.this);
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                
+
                 int qty = Integer.parseInt(tvQuantity.getText().toString());
                 size = "";
                 rdPrice = 0;
@@ -219,17 +155,17 @@ public class ProductDetailActivity extends AppCompatActivity {
                 if (rdoLarge.isChecked()) {
                     Toast.makeText(ProductDetailActivity.this, "Large", Toast.LENGTH_LONG).show();
                     size = "Large";
-                    rdPrice= 1 ;
+                    rdPrice = 1;
                     //rdPrice = 1;
-                } else if (rdoMedium.isChecked()){
+                } else if (rdoMedium.isChecked()) {
                     Toast.makeText(ProductDetailActivity.this, "Large", Toast.LENGTH_LONG).show();
                     size = "Medium";
                     rdPrice = (int) 0.25;
-                }else if (rdoSmall.isChecked()) {
+                } else if (rdoSmall.isChecked()) {
                     Toast.makeText(ProductDetailActivity.this, "Small", Toast.LENGTH_LONG).show();
                     size = "Small";
                     rdPrice = (int) 0.50;
-                }else{
+                } else {
                     size = "false";
                     rdPrice = 1;
                 }
@@ -237,29 +173,29 @@ public class ProductDetailActivity extends AppCompatActivity {
                 choosePetty = "";
                 pettyPrice = 0;
 
-                if(rdoSinglePetty.isChecked()){
+                if (rdoSinglePetty.isChecked()) {
                     choosePetty = rdoSinglePetty.getText().toString();
                     pettyPrice = 120;
-                }else if(rdoDoublePetty.isChecked()){
+                } else if (rdoDoublePetty.isChecked()) {
                     choosePetty = rdoDoublePetty.getText().toString();
                     pettyPrice = 150;
-                }else{
+                } else {
                     choosePetty = "false";
                     pettyPrice = 1;
                 }
 
                 bottleName = "";
                 bottlePrice = 0;
-                if(cbPepsi.isChecked()){
+                if (cbPepsi.isChecked()) {
                     bottleName = cbPepsi.getText().toString();
                     bottlePrice = 30;
-                }else if(cbCoke.isChecked()){
+                } else if (cbCoke.isChecked()) {
                     bottleName = cbCoke.getText().toString();
                     bottlePrice = 30;
-                }else if(cbFanta.isChecked()){
+                } else if (cbFanta.isChecked()) {
                     bottleName = cbFanta.getText().toString();
                     bottlePrice = 30;
-                }else{
+                } else {
                     bottleName = "false";
                     bottlePrice = 1;
                 }
@@ -267,11 +203,11 @@ public class ProductDetailActivity extends AppCompatActivity {
                 comboName = "";
                 comboPrice = 0;
 
-                if(cbWithCombo.isChecked()){
+                if (cbWithCombo.isChecked()) {
                     //   rlComboOption.setVisibility(View.VISIBLE);
                     comboName = "false";
                     comboPrice = 1;
-                }else {
+                } else {
                     if (cbPlaneFries.isChecked()) {
                         comboName = cbPlaneFries.getText().toString();
                         comboPrice = 120;
@@ -281,7 +217,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                     } else if (cbCurlyFries.isChecked()) {
                         comboName = cbCurlyFries.getText().toString();
                         comboPrice = 170;
-                    }else{
+                    } else {
                         comboName = "false";
                         comboPrice = 1;
                     }
@@ -300,11 +236,11 @@ public class ProductDetailActivity extends AppCompatActivity {
                 }
                 if(meat_quantity > 0){
 */
-                    cartHelper.addOrUpdateToCartOption(selectedProduct, qty, size, rdPrice,bottleName, bottlePrice, choosePetty, pettyPrice, comboName, comboPrice);
-    //                cartHelper.addOrUpdateToCartExtra(selectedProduct, qty, meat_quantity, meat_price, pepsi_qty, pepsi_price, size, rdPrice);
-                    updateCartButton();
-            //        updateCartButtonForMeat();
-                    Toast.makeText(ProductDetailActivity.this, "Extra's Added to Cart successfully", Toast.LENGTH_SHORT).show();
+                cartHelper.addOrUpdateToCartOption(selectedProduct, qty, size, rdPrice, bottleName, bottlePrice, choosePetty, pettyPrice, comboName, comboPrice);
+                //                cartHelper.addOrUpdateToCartExtra(selectedProduct, qty, meat_quantity, meat_price, pepsi_qty, pepsi_price, size, rdPrice);
+                updateCartButton();
+                //        updateCartButtonForMeat();
+                Toast.makeText(ProductDetailActivity.this, "Extra's Added to Cart successfully", Toast.LENGTH_SHORT).show();
 /*
                 }else {
 
@@ -348,19 +284,20 @@ public class ProductDetailActivity extends AppCompatActivity {
         updateCartButtonForPepsi();*/
         updateCartButton();
     }
-    private void updateCartButton(){
+
+    private void updateCartButton() {
         int qty = cartHelper.getProductQuantity(selectedProduct.productId);
 /*
         int m_qty = cartHelper.getMeatQuantity(selectedProduct.productId);
         int pepsi_qty = cartHelper.getPepsiQuantity(selectedProduct.productId);
 */
 
-        if(qty > 0){
+        if (qty > 0) {
             tvQuantity.setText(String.valueOf(qty));
             btnAddToCart.setText("Update");
-        }else{
+        } else {
             tvQuantity.setText("1");
-            btnAddToCart.setText("Add To Cart");
+            btnAddToCart.setText("Add To My Order");
         }
 
 /*

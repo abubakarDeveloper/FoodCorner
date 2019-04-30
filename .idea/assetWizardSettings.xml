@@ -95,7 +95,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_trending_flat_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/content/ic_remove_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -106,7 +106,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="9e66ff" />
-                            <entry key="outputName" value="ic_trending_flat_blue_24dp" />
+                            <entry key="outputName" value="ic_remove_white_24dp" />
                             <entry key="sourceFile" value="C:\Users\Abu bakhar" />
                           </map>
                         </option>
