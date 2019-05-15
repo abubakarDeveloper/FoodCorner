@@ -4,41 +4,26 @@ import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.database.sqlite.SQLiteCursorDriver;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.net.wifi.p2p.WifiP2pManager;
-import android.net.wifi.p2p.WifiP2pManager.ActionListener;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Parcelable;
-import android.preference.PreferenceManager;
+import android.support.design.widget.NavigationView;
 import android.support.graphics.drawable.VectorDrawableCompat;
-import android.support.v4.view.GestureDetectorCompat;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.helper.ItemTouchHelper;
-import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,17 +39,12 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.jeevandeshmukh.glidetoastlib.GlideToast;
 import com.mikepenz.actionitembadge.library.ActionItemBadge;
-import com.r0adkll.slidr.Slidr;
-import com.r0adkll.slidr.model.SlidrConfig;
-import com.r0adkll.slidr.model.SlidrInterface;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout;
 
@@ -230,7 +210,7 @@ public class MainActivity extends AppCompatActivity
                         recentProduct.desc = productObject.getString("p_desc");
                         recentProduct.catId = productObject.getInt("cat_id");
                         recentProduct.deal = productObject.getInt("p_deal");
-                        recentProduct.pRating = (float) productObject.getDouble("p_rating");
+                       // recentProduct.pRating = (float) productObject.getDouble("p_rating");
 
                         productList.add(recentProduct);
                     }
@@ -259,7 +239,7 @@ public class MainActivity extends AppCompatActivity
                         topProduct.desc = productObject1.getString("p_desc");
                         topProduct.catId = productObject1.getInt("cat_id");
                         topProduct.deal = productObject1.getInt("p_deal");
-                        topProduct.pRating = (float) productObject1.getDouble("p_rating");
+                        //topProduct.pRating = (float) productObject1.getDouble("p_rating");
                         topProductList.add(topProduct);
                     }
                     ProductAdapter topproductAdapter = new ProductAdapter(topProductList, new AdapterView.OnItemClickListener() {

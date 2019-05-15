@@ -120,6 +120,18 @@
 
         </android.support.v7.widget.CardView>
 
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:contentPadding="16dp">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_option"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -221,70 +233,77 @@
                     android:layout_height="match_parent"
                     android:text="With Combo" />
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/rl_combo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Drink:"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="18sp" />
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
-                <RadioGroup
-                    android:id="@+id/rg_bottle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <RadioButton
-                        android:id="@+id/cb_coke"
-                        android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Coke" />
+                        android:text="Drink:"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="18sp" />
 
-                    <RadioButton
-                        android:id="@+id/cb_pepsi"
-                        android:layout_width="wrap_content"
+                    <RadioGroup
+                        android:id="@+id/rg_bottle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <RadioButton
+                            android:id="@+id/cb_coke"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Coke" />
+
+                        <RadioButton
+                            android:id="@+id/cb_pepsi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pepsi" />
+
+                        <RadioButton
+                            android:id="@+id/cb_fanta"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fanta" />
+                    </RadioGroup>
+
+                    <TextView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Pepsi" />
+                        android:text="Fries:"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="18sp" />
 
-                    <RadioButton
-                        android:id="@+id/cb_fanta"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Fanta" />
-                </RadioGroup>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Fries:"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="18sp" />
-
-                <RadioGroup
-                    android:id="@+id/rg_combo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    <RadioGroup
+                        android:id="@+id/rg_combo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
 
-                    <RadioButton
-                        android:id="@+id/cb_onion_rings"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Onion Rings" />
+                        <RadioButton
+                            android:id="@+id/cb_onion_rings"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Onion Rings" />
 
-                    <RadioButton
-                        android:id="@+id/cb_plane_fries"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Plan Fries" />
+                        <RadioButton
+                            android:id="@+id/cb_plane_fries"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Plan Fries" />
 
-                    <RadioButton
-                        android:id="@+id/cb_curly_fries"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Curly Fries" />
-                </RadioGroup>
-
+                        <RadioButton
+                            android:id="@+id/cb_curly_fries"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Curly Fries" />
+                    </RadioGroup>
+                </LinearLayout>
             </LinearLayout>
 
         </android.support.v7.widget.CardView>

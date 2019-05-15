@@ -2,23 +2,20 @@ package ab_developer.com.foodcorner;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
@@ -27,7 +24,6 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.daimajia.slider.library.SliderTypes.TextSliderView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -144,7 +140,7 @@ private void fetchDataFromServer() {
                     topProduct.desc = productObject1.getString("p_desc");
                     topProduct.catId = productObject1.getInt("cat_id");
                     topProduct.deal = productObject1.getInt("p_deal");
-                    topProduct.pRating = (float) productObject1.getDouble("p_rating");
+                    //topProduct.pRating = (float) productObject1.getDouble("p_rating");
                     topProductList.add(topProduct);
                 }
                 ProductAdapter topproductAdapter = new ProductAdapter(topProductList, new AdapterView.OnItemClickListener() {

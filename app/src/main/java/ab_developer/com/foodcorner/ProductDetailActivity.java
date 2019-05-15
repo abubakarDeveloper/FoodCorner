@@ -1,25 +1,23 @@
 package ab_developer.com.foodcorner;
 
-import android.media.Image;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
-
-import me.zhanghai.android.materialratingbar.MaterialRatingBar;
-import yanzhikai.textpath.SyncTextPathView;
 
 public class ProductDetailActivity extends AppCompatActivity {
 
@@ -35,6 +33,8 @@ public class ProductDetailActivity extends AppCompatActivity {
     Product selectedProduct;
     CartHelper cartHelper;
 
+    RecyclerView rvOptions;
+
     RadioButton rdoMedium, rdoSmall, rdoLarge, rdoCard;
     RadioGroup rgPayment;
 
@@ -43,8 +43,10 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     CheckBox cbWithCombo;
 
+    LinearLayout rlWithCombo;
     RadioGroup rgBottle;
     RadioButton cbCoke, cbPepsi, cbFanta;
+
 
     RadioGroup rlComboOption;
     RadioButton cbOnionRings, cbPlaneFries, cbCurlyFries;
@@ -59,6 +61,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     int comboPrice = 0;
     String bottleName = "";
     int bottlePrice = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,10 +101,13 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         rlComboOption = findViewById(R.id.rg_combo);
 
+
         cbWithCombo = findViewById(R.id.cb_with_combo);
+        rlWithCombo = findViewById(R.id.rl_combo);
         cbCurlyFries = findViewById(R.id.cb_curly_fries);
         cbOnionRings = findViewById(R.id.cb_onion_rings);
         cbPlaneFries = findViewById(R.id.cb_plane_fries);
+        rvOptions = findViewById(R.id.rv_option);
         //  btnAddToCartMeat = findViewById(R.id.btn_add_to_cart_meat);
 
         //radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
@@ -119,6 +125,18 @@ public class ProductDetailActivity extends AppCompatActivity {
         tvName.setText(selectedProduct.name);
         tvPrice.setText("Rs." + selectedProduct.price);
         tvDesc.setText(selectedProduct.desc);
+        if(selectedProduct.optionsList != null){
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+            rvOptions.setLayoutManager(linearLayoutManager);
+            OptionsAdapter optionsAdapter = new OptionsAdapter(selectedProduct.optionsList);
+            rvOptions.setAdapter(optionsAdapter);
+            Toast.makeText(this, "options available", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "no options", Toast.LENGTH_SHORT).show();
+        }
+
+
+
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,6 +154,17 @@ public class ProductDetailActivity extends AppCompatActivity {
                 if (qty > 1) {
                     qty--;
                     tvQuantity.setText(String.valueOf(qty));
+                }
+            }
+        });
+
+        cbWithCombo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    rlWithCombo.setVisibility(View.VISIBLE);
+                } else {
+                    rlWithCombo.setVisibility(View.GONE);
                 }
             }
         });
@@ -202,6 +231,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
                 comboName = "";
                 comboPrice = 0;
+
 
                 if (cbWithCombo.isChecked()) {
                     //   rlComboOption.setVisibility(View.VISIBLE);

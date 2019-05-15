@@ -1,23 +1,16 @@
 package ab_developer.com.foodcorner;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -68,7 +61,7 @@ public class SearchActivity extends AppCompatActivity {
                         p.desc = productObject.getString("p_desc");
                         p.catId = productObject.getInt("cat_id");
                         p.imageLink = productObject.getString("p_image");
-                        p.pRating = Float.parseFloat(productObject.getString("p_rating"));
+                        //p.pRating = Float.parseFloat(productObject.getString("p_rating"));
                         productList.add(p);
                     }
                     GridLayoutManager manager = new GridLayoutManager(SearchActivity.this, 2);

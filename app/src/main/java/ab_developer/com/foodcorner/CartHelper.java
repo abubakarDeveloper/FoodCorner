@@ -58,39 +58,9 @@ public void addOrUpdateToCart(Product product, int quantity){
     }
     db.close();
 }
-/*
-    public void addOrUpdateToCartExtra(Product product, int quantity, Integer meat_quantity, Integer meat_price, Integer pepsi_qty, Integer pepsi_price, String size, Integer size_price){
-        SQLiteDatabase db = getWritableDatabase();
-        if(isProductInCart(product.productId)){
-           // String query = "Update cart set quantity=" + quantity + ",meat_qty="+ meat_quantity +", m_price=" + meat_price + ", pepsi_qty=" + pepsi_qty +", pepsi_price=" + pepsi_price +", size_price="+size_price+", size="+ size+ " WHERE p_id=" + product.productId;
-            String query = "Update cart set quantity=" + quantity + ", size_price="+size_price+", size="+ size+ " WHERE p_id=" + product.productId;
-            db.execSQL(query);
-        }else{
-            ContentValues CV = new ContentValues();
-            CV.put("p_id", product.productId);
-            CV.put("p_image", product.imageLink);
-            CV.put("p_name", product.name);
-            CV.put("p_desc", product.desc);
-            CV.put("p_price", product.price);
-            CV.put("cat_id", product.catId);
-            CV.put("quantity", quantity);
-            */
-/*
-            CV.put("meat_qty", meat_quantity);
-            CV.put("m_price", (Integer) meat_price);
-            CV.put("pepsi_qty", pepsi_qty);
-            CV.put("pepsi_price", pepsi_price);*//*
-
-            CV.put("size", size);
-            CV.put("size_price", size_price);
-            db.insert("cart",null,CV);
-        }
-        db.close();
-    }
-*/
     public void addOrUpdateToCartOption(Product product, int quantity, String size, double size_price, String bottle, int bottle_price, String petty, int petty_price, String combo_item, int combo_price){
         SQLiteDatabase db = getWritableDatabase();
-        if(isProductItemInCart(product.productId)){
+        if(isProductItemInCart(product.productId, size, bottle, petty, combo_item)){
             ContentValues CV = new ContentValues();
             CV.put("p_id", product.productId);
             CV.put("p_image", product.imageLink);
@@ -99,11 +69,7 @@ public void addOrUpdateToCart(Product product, int quantity){
             CV.put("p_price", product.price);
             CV.put("cat_id", product.catId);
             CV.put("quantity", quantity);
-            /*
-            CV.put("meat_qty", meat_quantity);
-            CV.put("m_price", (Integer) meat_price);
-            CV.put("pepsi_qty", pepsi_qty);
-            CV.put("pepsi_price", pepsi_price);*/
+
             CV.put("size", size);
             CV.put("size_price", size_price);
             CV.put("bottle", bottle);
@@ -114,7 +80,6 @@ public void addOrUpdateToCart(Product product, int quantity){
             CV.put("combo_price", combo_price);
             db.insert("cart",null,CV);
 
-            // String query = "Update cart set quantity=" + quantity + ",meat_qty="+ meat_quantity +", m_price=" + meat_price + ", pepsi_qty=" + pepsi_qty +", pepsi_price=" + pepsi_price +", size_price="+size_price+", size="+ size+ " WHERE p_id=" + product.productId;
         }else{
             String query = "Update cart set quantity=" + quantity + ", size_price="+size_price+", size='"+ size+ "', bottle='"+ bottle +"', bottle_price="+ bottle_price +", petty='" + petty +"', petty_price="+ petty_price +", combo='"+ combo_item +"', combo_price=" + combo_price+" WHERE p_id=" + product.productId;
             db.execSQL(query);
@@ -134,9 +99,9 @@ public void addOrUpdateToCart(Product product, int quantity){
             return false;
         }
     }
-    public boolean isProductItemInCart (int productId){
+    public boolean isProductItemInCart (int productId, String size, String bottle, String petty, String combo_item){
         //  boolean alreadyInCart = false;
-        String query = "SELECT * FROM cart WHERE p_id=" + productId + " AND petty='false' AND combo='false' AND bottle='false' AND size='false'";
+        String query = "SELECT * FROM cart WHERE p_id=" + productId + " AND petty=" + petty + "AND combo=" + combo_item + " AND bottle=" + bottle + " AND size="+ size ;
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(query, null);
         if(c.getCount() > 0 ){
@@ -169,8 +134,6 @@ public void addOrUpdateToCart(Product product, int quantity){
             CartItem cartItem = new CartItem();
             Product p = new Product();
             int quantity;
-            int meat_quantity;
-            int meat_price;
 
             String size;
             int size_price;
@@ -189,9 +152,7 @@ public void addOrUpdateToCart(Product product, int quantity){
                 p.catId = c.getInt(c.getColumnIndex("cat_id"));
                 quantity = c.getInt(c.getColumnIndex("quantity"));
                 cartItem.cartId = c.getInt(c.getColumnIndex("cart_id"));
-                /*meat_quantity = c.getInt(c.getColumnIndex("meat_qty"));
-                meat_price = c.getInt(c.getColumnIndex("m_price"));
-              */
+
                 bottle = c.getString(c.getColumnIndex("bottle"));
                 bottle_price = c.getInt(c.getColumnIndex("bottle_price"));
                 petty = c.getString(c.getColumnIndex("petty"));
@@ -212,9 +173,7 @@ public void addOrUpdateToCart(Product product, int quantity){
                 cartItem.petty_price = petty_price;
                 cartItem.combo = combo;
                 cartItem.combo_price = combo_price;
-                /*cartItem.meat_quantity = meat_quantity;
-                cartItem.meat_price = meat_price;
-                */
+
                 cartList.add(cartItem);
 
 
@@ -274,52 +233,6 @@ public void addOrUpdateToCart(Product product, int quantity){
             int qty = c.getInt(c.getColumnIndex("quantity"));
             c.close();
             return qty;
-        }
-    }
-
-    public int  getMeatQuantity(int productId){
-
-        String query = "SELECT meat_qty FROM cart WHERE p_id=" + productId;
-        SQLiteDatabase db = getReadableDatabase();
-        Cursor c = db.rawQuery(query, null);
-        if(c.getCount() == 0){
-            c.close();
-            return 0;
-        }else {
-            c.moveToFirst();
-            int m_qty = c.getInt(c.getColumnIndex("meat_qty"));
-            c.close();
-            return m_qty;
-        }
-    }
-    public int  getPepsiQuantity(int productId){
-
-        String query = "SELECT pepsi_qty FROM cart WHERE p_id=" + productId;
-        SQLiteDatabase db = getReadableDatabase();
-        Cursor c = db.rawQuery(query, null);
-        if(c.getCount() == 0){
-            c.close();
-            return 0;
-        }else {
-            c.moveToFirst();
-            int pepsi_qty = c.getInt(c.getColumnIndex("pepsi_qty"));
-            c.close();
-            return pepsi_qty;
-        }
-    }
-    public int  getSize(int productId){
-
-        String query = "SELECT size FROM cart WHERE p_id=" + productId;
-        SQLiteDatabase db = getReadableDatabase();
-        Cursor c = db.rawQuery(query, null);
-        if(c.getCount() == 0){
-            c.close();
-            return 0;
-        }else {
-            c.moveToFirst();
-            int size = c.getInt(c.getColumnIndex("size"));
-            c.close();
-            return size;
         }
     }
 }

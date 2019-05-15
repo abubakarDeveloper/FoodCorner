@@ -1,11 +1,9 @@
 package ab_developer.com.foodcorner;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.Parcelable;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -24,7 +22,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ProductsActivity extends AppCompatActivity {
@@ -80,7 +77,7 @@ public class ProductsActivity extends AppCompatActivity {
                         p.catId = productObject.getInt("cat_id");
                         p.imageLink = productObject.getString("p_image");
                         p.deal = productObject.getInt("p_deal");
-                        p.pRating = (float) productObject.getDouble("p_rating");
+                        //p.pRating = (float) productObject.getDouble("p_rating");
                         productList.add(p);
                     }
                     GridLayoutManager manager = new GridLayoutManager(ProductsActivity.this, 2);
