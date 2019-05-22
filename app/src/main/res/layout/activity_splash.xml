@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".SplashActivity"
     android:background="#ffffff">
+    <me.ibrahimsn.particle.ParticleView
+        android:id="@+id/particleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:particleCount="20"
+        app:minParticleRadius="5"
+        app:maxParticleRadius="12"
+        app:particleColor="@android:color/white"
+        app:backgroundColor="@android:color/holo_red_light" />
     <ImageView
         android:id="@+id/iv_logo_image"
         android:layout_width="200dp"

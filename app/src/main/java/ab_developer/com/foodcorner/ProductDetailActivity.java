@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 public class ProductDetailActivity extends AppCompatActivity {
 
     ImageView ivProductImage;
@@ -61,8 +63,11 @@ public class ProductDetailActivity extends AppCompatActivity {
     int comboPrice = 0;
     String bottleName = "";
     int bottlePrice = 0;
+    CartItem cItem;
+    ArrayList<CartItem> cartList;
 
-
+    Option selectedOption;
+    Value selectedValue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,15 +90,15 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         // rvExtra = findViewById(R.id.rv_extra);
 
-        rgPayment = findViewById(R.id.rg_payment);
+   /*     rgPayment = findViewById(R.id.rg_payment);
         rdoLarge = findViewById(R.id.rdo_cod);
         rdoSmall = findViewById(R.id.rdo_jazzcash);
         rdoMedium = findViewById(R.id.rdo_easypaisa);
-
-        rgOption = findViewById(R.id.rg_option);
+*/
+ /*       rgOption = findViewById(R.id.rg_option);
         rdoSinglePetty = findViewById(R.id.rdo_single_petty);
         rdoDoublePetty = findViewById(R.id.rdo_double_petty);
-
+*/
         rgBottle = findViewById(R.id.rg_bottle);
         cbCoke = findViewById(R.id.cb_coke);
         cbPepsi = findViewById(R.id.cb_pepsi);
@@ -115,7 +120,10 @@ public class ProductDetailActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
 
         selectedProduct = (Product) bundle.getSerializable("product");
-//        final Product extra = (Product) bundle.getSerializable("extraProduct");
+
+
+
+        //        final Product extra = (Product) bundle.getSerializable("extraProduct");
 
         // get the selected RadioButton of the group
         Picasso.with(ProductDetailActivity.this)
@@ -134,9 +142,6 @@ public class ProductDetailActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "no options", Toast.LENGTH_SHORT).show();
         }
-
-
-
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,6 +163,12 @@ public class ProductDetailActivity extends AppCompatActivity {
             }
         });
 
+        if(selectedProduct.extra == 1){
+            cbWithCombo.setVisibility(View.VISIBLE);
+        }else{
+            cbWithCombo.setVisibility(View.GONE);
+        }
+
         cbWithCombo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -168,8 +179,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                 }
             }
         });
-//button coe for meat insertion
-
+        //button coe for meat insertion
 
         cartHelper = new CartHelper(ProductDetailActivity.this);
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
@@ -177,8 +187,9 @@ public class ProductDetailActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
+
                 int qty = Integer.parseInt(tvQuantity.getText().toString());
-                size = "";
+                /*size = "";
                 rdPrice = 0;
 
                 if (rdoLarge.isChecked()) {
@@ -251,7 +262,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                         comboName = "false";
                         comboPrice = 1;
                     }
-                }
+                }*/
 /*
                 int meat_quantity = Integer.parseInt(tvMeat.getText().toString());
                 int pepsi_qty = Integer.parseInt(tvPepsi.getText().toString());
@@ -266,7 +277,8 @@ public class ProductDetailActivity extends AppCompatActivity {
                 }
                 if(meat_quantity > 0){
 */
-                cartHelper.addOrUpdateToCartOption(selectedProduct, qty, size, rdPrice, bottleName, bottlePrice, choosePetty, pettyPrice, comboName, comboPrice);
+ //               cartHelper.addOrUpdateToCartOption(selectedProduct, qty, size, rdPrice, bottleName, bottlePrice, choosePetty, pettyPrice, comboName, comboPrice);
+                    cartHelper.addOrUpdateToCart(selectedProduct, qty);
                 //                cartHelper.addOrUpdateToCartExtra(selectedProduct, qty, meat_quantity, meat_price, pepsi_qty, pepsi_price, size, rdPrice);
                 updateCartButton();
                 //        updateCartButtonForMeat();

@@ -2,26 +2,18 @@ package ab_developer.com.foodcorner;
 
 import android.content.Intent;
 import android.graphics.Path;
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.view.Window;
+import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.circulardialog.CDialog;
 import com.example.circulardialog.extras.CDConstants;
-import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog;
 
+import me.ibrahimsn.particle.ParticleView;
 import yanzhikai.textpath.AsyncTextPathView;
 import yanzhikai.textpath.painter.AsyncPathPainter;
 
@@ -31,6 +23,7 @@ public class SplashActivity extends AppCompatActivity {
     TextView tvAppName;
     //  private static int SPLASH_TIME_OUT = 4000;
     AsyncTextPathView astpv;
+    ParticleView particleView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +31,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
+        particleView = findViewById(R.id.particleView);
         ivLogoImage = findViewById(R.id.iv_logo_image);
         //tvAppName = findViewById(R.id.tv_app_name);
         astpv = findViewById(R.id.atpv_1);
@@ -73,7 +67,7 @@ public class SplashActivity extends AppCompatActivity {
          final Thread timer = new Thread() {
              public void run() {
                  try {
-                     sleep(5000);
+                     sleep(9000);
                  } catch (InterruptedException ie) {
                      ie.printStackTrace();
                  } finally {

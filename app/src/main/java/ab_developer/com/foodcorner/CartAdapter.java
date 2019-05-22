@@ -17,12 +17,15 @@ public class CartAdapter extends  RecyclerView.Adapter<CartAdapter.cartHolder>{
     AdapterView.OnItemClickListener addClickListener;
     AdapterView.OnItemClickListener subtractClickListener;
     AdapterView.OnItemClickListener removeClickListener;
+    AdapterView.OnItemClickListener onItemClickListener;
 
-    public CartAdapter(ArrayList<CartItem> dataset, AdapterView.OnItemClickListener addClickListener, AdapterView.OnItemClickListener subtractClickListener, AdapterView.OnItemClickListener removeClickListener) {
+
+    public CartAdapter(ArrayList<CartItem> dataset, AdapterView.OnItemClickListener addClickListener, AdapterView.OnItemClickListener subtractClickListener, AdapterView.OnItemClickListener removeClickListener, AdapterView.OnItemClickListener onItemClickListener) {
         this.dataset = dataset;
         this.addClickListener = addClickListener;
         this.subtractClickListener = subtractClickListener;
         this.removeClickListener = removeClickListener;
+        this.onItemClickListener = onItemClickListener;
     }
 
     @NonNull
@@ -69,6 +72,12 @@ public class CartAdapter extends  RecyclerView.Adapter<CartAdapter.cartHolder>{
             @Override
             public void onClick(View v) {
                 removeClickListener.onItemClick(null, holder.btnRemove, holder.getAdapterPosition(),0);
+            }
+        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickListener.onItemClick(null, holder.itemView, holder.getAdapterPosition(), 0);
             }
         });
     }

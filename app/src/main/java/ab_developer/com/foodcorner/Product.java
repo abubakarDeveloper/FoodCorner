@@ -20,6 +20,8 @@ public class Product implements Serializable {
     int catId;
     @SerializedName("p_deal")
     int deal;
+    @SerializedName("p_extra")
+    int extra;
     //float pRating;
 
     @SerializedName("options")

@@ -16,6 +16,7 @@
         <item>Karachi</item>
         <item>Peshawar</item>
     </string-array>
+    <string name="title_activity_map">MapActivity</string>
 
      
 </resources>

@@ -32,13 +32,14 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.jeevandeshmukh.glidetoastlib.GlideToast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import me.ibrahimsn.particle.ParticleView;
 
 public class TabActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -49,7 +50,6 @@ public class TabActivity extends AppCompatActivity {
     ViewPagerAdapter viewPagerAdapter;
 
     int position;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -175,9 +175,12 @@ public class TabActivity extends AppCompatActivity {
 
             final View rootView = inflater.inflate(R.layout.fragment_placeholder, container, false);
 
+
             int catId = getArguments().getInt("catId");
 
             final RecyclerView rvProducts;
+            final ParticleView particleView= rootView.findViewById(R.id.particleView);
+
             rvProducts = rootView.findViewById(R.id.rv_products);
             final SwipeRefreshLayout swipe;
             swipe = rootView.findViewById(R.id.swipe);
@@ -192,8 +195,9 @@ public class TabActivity extends AppCompatActivity {
                 public void onResponse(String response) {
                     dialog.dismiss();
                     swipe.setRefreshing(false);
+                    Toast.makeText(getActivity(), "SUCCESS", Toast.LENGTH_LONG).show();
 
-                    new GlideToast.makeToast(getActivity(), "SUCCESS", 3000, GlideToast.SUCCESSTOAST, GlideToast.BOTTOM, R.mipmap.ic_launcher, "#ffffff").show();
+//                    new GlideToast.makeToast(getActivity(), "SUCCESS", 3000, GlideToast.SUCCESSTOAST, GlideToast.BOTTOM, R.mipmap.ic_launcher, "#ffffff").show();
                     try {
                         Log.i("mytag", response);
                         JSONArray productsArray = new JSONArray(response);
@@ -235,8 +239,8 @@ public class TabActivity extends AppCompatActivity {
                     } catch (JSONException e) {
                         swipe.setRefreshing(false);
                         e.printStackTrace();
-                        //Toast.makeText(getActivity(), "Parsing Error", Toast.LENGTH_SHORT).show();
-                        new GlideToast.makeToast(getActivity(), "PARSING ERROR", 3000, GlideToast.WARNINGTOAST, GlideToast.TOP, R.mipmap.ic_launcher, "#ffff00").show();
+                        Toast.makeText(getActivity(), "Parsing Error", Toast.LENGTH_SHORT).show();
+                        //new GlideToast.makeToast(getActivity(), "PARSING ERROR", 3000, GlideToast.WARNINGTOAST, GlideToast.TOP, R.mipmap.ic_launcher, "#ffff00").show();
                     }
                 }
             }, new Response.ErrorListener() {
@@ -245,8 +249,8 @@ public class TabActivity extends AppCompatActivity {
                     dialog.dismiss();
                     swipe.setRefreshing(false);
                     error.printStackTrace();
-//                    Toast.makeText(getActivity(), "Volley Error", Toast.LENGTH_SHORT).show();
-                    new GlideToast.makeToast(getActivity(), "VOLLEY ERROR", 3000, GlideToast.FAILTOAST, GlideToast.CENTER, R.mipmap.ic_launcher, "#ff0000").show();
+                    Toast.makeText(getActivity(), "Volley Error", Toast.LENGTH_SHORT).show();
+                    //new GlideToast.makeToast(getActivity(), "VOLLEY ERROR", 3000, GlideToast.FAILTOAST, GlideToast.CENTER, R.mipmap.ic_launcher, "#ff0000").show();
 
                 }
             });

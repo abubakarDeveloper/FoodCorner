@@ -55,6 +55,8 @@ public class OptionValueAdapter extends RecyclerView.Adapter<OptionValueAdapter.
         } else {
             holder.rdoOptionValue.setChecked(false);
         }
+
+
     }
 
 

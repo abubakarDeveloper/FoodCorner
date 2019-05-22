@@ -37,7 +37,6 @@ import com.android.volley.toolbox.Volley;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
-import com.jeevandeshmukh.glidetoastlib.GlideToast;
 import com.mikepenz.actionitembadge.library.ActionItemBadge;
 
 import org.json.JSONArray;
@@ -141,7 +140,8 @@ public class MainActivity extends AppCompatActivity
                 dialog.dismiss();
                 mWaveSwipeRefreshLayout.setRefreshing(false);
                 //Toast.makeText(MainActivity.this, "Succcess", Toast.LENGTH_SHORT).show();
-                new GlideToast.makeToast(MainActivity.this, "SUCCESS", GlideToast.LENGTHLONG, GlideToast.SUCCESSTOAST).show();
+//                new GlideToast.makeToast(MainActivity.this, "SUCCESS", GlideToast.LENGTHLONG, GlideToast.SUCCESSTOAST).show();
+                Toast.makeText(MainActivity.this, "SUCCESS", Toast.LENGTH_SHORT).show();
 
                 try {
                     JSONObject jObject = new JSONObject(response);
@@ -296,8 +296,8 @@ public class MainActivity extends AppCompatActivity
                 } catch (JSONException e) {
                     e.printStackTrace();
                     mWaveSwipeRefreshLayout.setRefreshing(false);
-//                    Toast.makeText(MainActivity.this, "parsing error", Toast.LENGTH_SHORT).show();
-                    new GlideToast.makeToast(MainActivity.this, "PARSING ERROR", 3000, GlideToast.WARNINGTOAST).show();
+                    Toast.makeText(MainActivity.this, "parsing error", Toast.LENGTH_SHORT).show();
+                    //new GlideToast.makeToast(MainActivity.this, "PARSING ERROR", 3000, GlideToast.WARNINGTOAST).show();
                 }
 
 /*
@@ -312,7 +312,8 @@ public class MainActivity extends AppCompatActivity
                 //swipeRefreshLayout.setRefreshing(false);
                 mWaveSwipeRefreshLayout.setRefreshing(false);
                 error.printStackTrace();
-                new GlideToast.makeToast(MainActivity.this, "VOLLEY ERROR", GlideToast.LENGTHLONG, GlideToast.FAILTOAST).show();
+                //new GlideToast.makeToast(MainActivity.this, "VOLLEY ERROR", GlideToast.LENGTHLONG, GlideToast.FAILTOAST).show();
+                Toast.makeText(MainActivity.this, "VOLLEY ERROR", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -519,6 +520,8 @@ public class MainActivity extends AppCompatActivity
             intent.setType("text/plain");
             startActivity(intent);
         } else if (id == R.id.nav_send) {
+            Intent intent = new Intent(MainActivity.this, PermissionsActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_logout) {
 /*
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);

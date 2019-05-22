@@ -1,8 +1,8 @@
 package ab_developer.com.foodcorner;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -77,6 +78,16 @@ public class CartActivity extends AppCompatActivity {
                 cartAdapter.notifyItemRemoved(position);
                 updateCartTotal();
             }
+        }, new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Product selectedProduct = new Product();
+               // CartItem selectedCartItem = cartList.get(position);
+                Intent intent = new Intent(CartActivity.this, ProductDetailActivity.class);
+                intent.putExtra("product", selectedProduct);
+                startActivity(intent);
+
+            }
         });
         LinearLayoutManager manager = new LinearLayoutManager(CartActivity.this, LinearLayoutManager.VERTICAL, false);
         rvCartItems.setLayoutManager(manager);
@@ -114,6 +125,8 @@ public class CartActivity extends AppCompatActivity {
                 cartHelper.removeFromCart(cartList.get(viewHolder.getAdapterPosition()).p.productId);
                 cartList.remove(viewHolder.getAdapterPosition());
                 cartAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+                Toast.makeText(CartActivity.this, "PArsing error", Toast.LENGTH_LONG).show();
+                //new GlideToast.makeToast(CartActivity.this, "PARSING ERROR", 3000, GlideToast.WARNINGTOAST, GlideToast.TOP, R.mipmap.ic_launcher, "#ffff00").show();
             }
         });
         swipeToDismissTouchHelper.attachToRecyclerView(rvCartItems);

@@ -1,5 +1,8 @@
 package ab_developer.com.foodcorner;
-public class CartItem {
+
+import java.io.Serializable;
+
+public class CartItem implements Serializable {
     Product p;
     int quantity;
     int meat_quantity;
