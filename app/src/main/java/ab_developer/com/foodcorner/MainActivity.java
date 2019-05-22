@@ -47,6 +47,7 @@ import java.util.ArrayList;
 
 import jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout;
 
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity
     RecyclerView rvRecentProducts, rvCategories, rvTopProducts;
     NavigationView navigationView;
     CartHelper cartHelper;
-    SwipeRefreshLayout swipeRefreshLayout;
+    //SwipeRefreshLayout swipeRefreshLayout;
     WaveSwipeRefreshLayout mWaveSwipeRefreshLayout;
 
     @Override

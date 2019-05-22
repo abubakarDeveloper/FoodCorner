@@ -39,7 +39,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import me.ibrahimsn.particle.ParticleView;
 
 public class TabActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -179,7 +178,7 @@ public class TabActivity extends AppCompatActivity {
             int catId = getArguments().getInt("catId");
 
             final RecyclerView rvProducts;
-            final ParticleView particleView= rootView.findViewById(R.id.particleView);
+            //final ParticleView particleView= rootView.findViewById(R.id.particleView);
 
             rvProducts = rootView.findViewById(R.id.rv_products);
             final SwipeRefreshLayout swipe;

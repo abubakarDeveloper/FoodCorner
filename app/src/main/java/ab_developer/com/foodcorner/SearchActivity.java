@@ -18,8 +18,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.r0adkll.slidr.Slidr;
-import com.r0adkll.slidr.model.SlidrInterface;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,14 +29,12 @@ public class SearchActivity extends AppCompatActivity {
     RecyclerView rvSearch;
     ProductAdapter adapter;
     SearchView searchView;
-    SlidrInterface slider;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         rvSearch = findViewById(R.id.rv_search);
         searchView = findViewById(R.id.searchView);
-        slider=Slidr.attach(this);
         final ProgressDialog pDailog = new ProgressDialog(SearchActivity.this);
         pDailog.setMessage("Please Wait");
         pDailog.setCancelable(false);
@@ -111,14 +107,6 @@ public class SearchActivity extends AppCompatActivity {
                     }
                 });
     }
-
-    public void lockSlide(View view){
-        slider.lock();
-    }
-    public void unLockSlide(View view){
-        slider.unlock();
-    }
-
 /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

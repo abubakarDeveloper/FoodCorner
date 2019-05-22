@@ -45,6 +45,7 @@ public class OptionValueAdapter extends RecyclerView.Adapter<OptionValueAdapter.
             public void onClick(View v) {
                 if (holder.rdoOptionValue.isChecked()) {
                     selectedPosition = holder.getAdapterPosition();
+                    onItemClickListener.onItemClick(null, null, selectedPosition, 0);
                     notifyDataSetChanged();
                 }
 

@@ -50,7 +50,7 @@ public class CartActivity extends AppCompatActivity {
                // m_qty = selectedCartItem.meat_quantity;
                 qty++;
                 selectedCartItem.quantity = qty;
-                cartHelper.addOrUpdateToCart(selectedCartItem.p, qty);
+                //cartHelper.addOrUpdateToCart(selectedCartItem.p, qty);
                 cartAdapter.notifyDataSetChanged();
                 updateCartTotal();
             }
@@ -63,7 +63,7 @@ public class CartActivity extends AppCompatActivity {
                 if (qty > 1) {
                     qty--;
                     selectedCartItem.quantity = qty;
-                    cartHelper.addOrUpdateToCart(selectedCartItem.p, qty);
+                    //cartHelper.addOrUpdateToCart(selectedCartItem.p, qty);
                     cartAdapter.notifyDataSetChanged();
                     updateCartTotal();
                 }

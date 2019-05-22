@@ -26,4 +26,6 @@ public class Product implements Serializable {
 
     @SerializedName("options")
     ArrayList<Option> optionsList;
+
+    boolean isComboSelected = false;
 }

@@ -22,12 +22,10 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import me.zhanghai.android.materialratingbar.MaterialRatingBar;
-
 public class RateActivity extends AppCompatActivity {
 
     TextView tvRate;
-    MaterialRatingBar mrbRating;
+    //MaterialRatingBar mrbRating;
     String rating;
     Button btnRating;
 
@@ -36,8 +34,8 @@ public class RateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate);
         tvRate = findViewById(R.id.tv_rate);
-        mrbRating = findViewById(R.id.mrb_rating);
-        rating = String.valueOf(mrbRating.getRating());
+        //mrbRating = findViewById(R.id.mrb_rating);
+        //rating = String.valueOf(mrbRating.getRating());
         btnRating = findViewById(R.id.btn_rating);
         btnRating.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,12 +43,12 @@ public class RateActivity extends AppCompatActivity {
                 rating();
             }
         });
-        mrbRating.setOnRatingChangeListener(new MaterialRatingBar.OnRatingChangeListener() {
+        /*mrbRating.setOnRatingChangeListener(new MaterialRatingBar.OnRatingChangeListener() {
             @Override
             public void onRatingChanged(MaterialRatingBar ratingBar, float rating) {
                 Toast.makeText(getApplicationContext(), String.valueOf(mrbRating.getRating()), Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
     public void rating(){
         final ProgressDialog dialog = new ProgressDialog(RateActivity.this);

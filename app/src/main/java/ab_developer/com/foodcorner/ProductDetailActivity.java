@@ -26,7 +26,6 @@ public class ProductDetailActivity extends AppCompatActivity {
     ImageView ivProductImage;
     TextView tvName;
     TextView tvPrice;
-    TextView tvDesc;
 
     ImageButton btnAdd;
     ImageButton btnRemove;
@@ -37,20 +36,11 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     RecyclerView rvOptions;
 
-    RadioButton rdoMedium, rdoSmall, rdoLarge, rdoCard;
-    RadioGroup rgPayment;
-
-    RadioButton rdoSinglePetty, rdoDoublePetty;
-    RadioGroup rgOption;
-
     CheckBox cbWithCombo;
 
     LinearLayout rlWithCombo;
-    RadioGroup rgBottle;
-    RadioButton cbCoke, cbPepsi, cbFanta;
+    RadioButton rbCoke, rbPepsi, rbFanta;
 
-
-    RadioGroup rlComboOption;
     RadioButton cbOnionRings, cbPlaneFries, cbCurlyFries;
 
     String size = "";
@@ -68,6 +58,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     Option selectedOption;
     Value selectedValue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +71,6 @@ public class ProductDetailActivity extends AppCompatActivity {
         ivProductImage = findViewById(R.id.iv_product_image);
         tvName = findViewById(R.id.tv_product_name);
         tvPrice = findViewById(R.id.tv_product_price);
-        tvDesc = findViewById(R.id.tv_product_desc);
 
         btnRemove = findViewById(R.id.btn_remove);
         tvQuantity = findViewById(R.id.tv_quantity);
@@ -99,13 +89,9 @@ public class ProductDetailActivity extends AppCompatActivity {
         rdoSinglePetty = findViewById(R.id.rdo_single_petty);
         rdoDoublePetty = findViewById(R.id.rdo_double_petty);
 */
-        rgBottle = findViewById(R.id.rg_bottle);
-        cbCoke = findViewById(R.id.cb_coke);
-        cbPepsi = findViewById(R.id.cb_pepsi);
-        cbFanta = findViewById(R.id.cb_fanta);
-
-        rlComboOption = findViewById(R.id.rg_combo);
-
+        rbCoke = findViewById(R.id.cb_coke);
+        rbPepsi = findViewById(R.id.cb_pepsi);
+        rbFanta = findViewById(R.id.cb_fanta);
 
         cbWithCombo = findViewById(R.id.cb_with_combo);
         rlWithCombo = findViewById(R.id.rl_combo);
@@ -122,7 +108,6 @@ public class ProductDetailActivity extends AppCompatActivity {
         selectedProduct = (Product) bundle.getSerializable("product");
 
 
-
         //        final Product extra = (Product) bundle.getSerializable("extraProduct");
 
         // get the selected RadioButton of the group
@@ -132,8 +117,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         tvName.setText(selectedProduct.name);
         tvPrice.setText("Rs." + selectedProduct.price);
-        tvDesc.setText(selectedProduct.desc);
-        if(selectedProduct.optionsList != null){
+        if (selectedProduct.optionsList != null) {
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
             rvOptions.setLayoutManager(linearLayoutManager);
             OptionsAdapter optionsAdapter = new OptionsAdapter(selectedProduct.optionsList);
@@ -163,9 +147,9 @@ public class ProductDetailActivity extends AppCompatActivity {
             }
         });
 
-        if(selectedProduct.extra == 1){
+        if (selectedProduct.extra == 1) {
             cbWithCombo.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             cbWithCombo.setVisibility(View.GONE);
         }
 
@@ -185,10 +169,28 @@ public class ProductDetailActivity extends AppCompatActivity {
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
                 int qty = Integer.parseInt(tvQuantity.getText().toString());
+                String drink = "";
+                String fries = "";
+
+                if (rbCoke.isChecked()) {
+                    drink = rbCoke.getText().toString();
+                } else if (rbFanta.isChecked()) {
+                    drink = rbFanta.getText().toString();
+                } else {
+                    drink = rbPepsi.getText().toString();
+                }
+
+                if (cbPlaneFries.isChecked()) {
+                    fries = cbPlaneFries.getText().toString();
+                } else if (cbCurlyFries.isChecked()) {
+                    fries = cbCurlyFries.getText().toString();
+                } else {
+                    fries = cbOnionRings.getText().toString();
+                }
+
+                cartHelper.addOrUpdateToCart(selectedProduct, qty, cbWithCombo.isChecked(), cbWithCombo.isChecked() ? drink : "", cbWithCombo.isChecked() ? fries : "");
+
                 /*size = "";
                 rdPrice = 0;
 
@@ -226,14 +228,14 @@ public class ProductDetailActivity extends AppCompatActivity {
 
                 bottleName = "";
                 bottlePrice = 0;
-                if (cbPepsi.isChecked()) {
-                    bottleName = cbPepsi.getText().toString();
+                if (rbPepsi.isChecked()) {
+                    bottleName = rbPepsi.getText().toString();
                     bottlePrice = 30;
-                } else if (cbCoke.isChecked()) {
-                    bottleName = cbCoke.getText().toString();
+                } else if (rbCoke.isChecked()) {
+                    bottleName = rbCoke.getText().toString();
                     bottlePrice = 30;
-                } else if (cbFanta.isChecked()) {
-                    bottleName = cbFanta.getText().toString();
+                } else if (rbFanta.isChecked()) {
+                    bottleName = rbFanta.getText().toString();
                     bottlePrice = 30;
                 } else {
                     bottleName = "false";
@@ -277,8 +279,8 @@ public class ProductDetailActivity extends AppCompatActivity {
                 }
                 if(meat_quantity > 0){
 */
- //               cartHelper.addOrUpdateToCartOption(selectedProduct, qty, size, rdPrice, bottleName, bottlePrice, choosePetty, pettyPrice, comboName, comboPrice);
-                    cartHelper.addOrUpdateToCart(selectedProduct, qty);
+                //               cartHelper.addOrUpdateToCartOption(selectedProduct, qty, size, rdPrice, bottleName, bottlePrice, choosePetty, pettyPrice, comboName, comboPrice);
+
                 //                cartHelper.addOrUpdateToCartExtra(selectedProduct, qty, meat_quantity, meat_price, pepsi_qty, pepsi_price, size, rdPrice);
                 updateCartButton();
                 //        updateCartButtonForMeat();

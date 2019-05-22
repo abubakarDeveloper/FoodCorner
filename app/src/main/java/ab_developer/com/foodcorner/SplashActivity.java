@@ -10,20 +10,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.circulardialog.CDialog;
-import com.example.circulardialog.extras.CDConstants;
-
-import me.ibrahimsn.particle.ParticleView;
-import yanzhikai.textpath.AsyncTextPathView;
-import yanzhikai.textpath.painter.AsyncPathPainter;
-
 public class SplashActivity extends AppCompatActivity {
 
     ImageView ivLogoImage;
     TextView tvAppName;
     //  private static int SPLASH_TIME_OUT = 4000;
-    AsyncTextPathView astpv;
-    ParticleView particleView;
+    //AsyncTextPathView astpv;
+    //ParticleView particleView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +24,10 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
-        particleView = findViewById(R.id.particleView);
+        //particleView = findViewById(R.id.particleView);
         ivLogoImage = findViewById(R.id.iv_logo_image);
         //tvAppName = findViewById(R.id.tv_app_name);
-        astpv = findViewById(R.id.atpv_1);
+        //astpv = findViewById(R.id.atpv_1);
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.anim_move_top);
         ivLogoImage.setAnimation(animation);
@@ -54,13 +47,13 @@ public class SplashActivity extends AppCompatActivity {
             }
         },SPLASH_TIME_OUT);
 */
-        astpv.setPathPainter(new AsyncPathPainter() {
+        /*astpv.setPathPainter(new AsyncPathPainter() {
             @Override
             public void onDrawPaintPath(float x, float y, Path paintPath) {
                 paintPath.addCircle(x, y, 6, Path.Direction.CCW);
             }
-        });
-        astpv.startAnimation(0, 1);
+        });*/
+        //astpv.startAnimation(0, 1);
      if(internetIsConnected() == true) {
          final Intent intent = new Intent(SplashActivity.this, IntroActivity.class);
 
@@ -94,14 +87,14 @@ public class SplashActivity extends AppCompatActivity {
                  .build();
          dialog.show();*/
 
-         new CDialog(SplashActivity.this).createAlert("Check Your Internet Connection!",
+         /*new CDialog(SplashActivity.this).createAlert("Check Your Internet Connection!",
                  CDConstants.ERROR,   // Type of dialog
                  CDConstants.LARGE)    //  size of dialog
                  .setAnimation(CDConstants.SCALE_FROM_BOTTOM_TO_TOP)     //  Animation for enter/exit
                  .setDuration(3000)   // in milliseconds
                  .setTextSize(CDConstants.LARGE_TEXT_SIZE)  // CDConstants.LARGE_TEXT_SIZE, CDConstants.NORMAL_TEXT_SIZE
                  .show();
-         astpv.startAnimation(0, 1);
+         astpv.startAnimation(0, 1);*/
      }
 
     }

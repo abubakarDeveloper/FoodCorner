@@ -11,6 +11,8 @@ public class Option implements Serializable {
     String option_name;
     int p_id;
 
+    Value selectedValue;
+
     @SerializedName("values")
     ArrayList<Value> valuesList;
 }

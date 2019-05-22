@@ -33,6 +33,7 @@ public class CartHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS cart");
         onCreate(db);
     }
+
     /*
         public void addOrUpdateToCart(Product product, int quantity){
             SQLiteDatabase db = getWritableDatabase();
@@ -53,12 +54,12 @@ public class CartHelper extends SQLiteOpenHelper {
             db.close();
         }
     */
-    public void addOrUpdateToCart(Product product, int quantity){
+    public void addOrUpdateToCart(Product product, int quantity, boolean isComboSelected, String drink, String fires) {
         SQLiteDatabase db = getWritableDatabase();
-        if(isProductInCart(product.productId)){
+        if (isProductInCart(product.productId)) {
             String query = "Update cart set quantity=" + quantity + " WHERE p_id=" + product.productId;
             db.execSQL(query);
-        }else{
+        } else {
             ContentValues CV = new ContentValues();
             CV.put("p_id", product.productId);
             CV.put("p_image", product.imageLink);
@@ -67,11 +68,12 @@ public class CartHelper extends SQLiteOpenHelper {
             CV.put("p_price", product.price);
             CV.put("cat_id", product.catId);
             CV.put("quantity", quantity);
-            db.insert("cart",null,CV);
+            db.insert("cart", null, CV);
         }
         db.close();
     }
-    public void addOrUpdateToCartExtra(Product product, int quantity, int meat_quantity, int meat_price){
+
+    public void addOrUpdateToCartExtra(Product product, int quantity, int meat_quantity, int meat_price) {
         SQLiteDatabase db = getWritableDatabase();
 /*        if(isProductInCart(product.productId)){
             String query = "Update cart set quantity=" + quantity + ",meat_qty="+ meat_quantity +",meat_price=" + meat_price + " WHERE p_id=" + product.productId;
@@ -87,29 +89,32 @@ public class CartHelper extends SQLiteOpenHelper {
         CV.put("quantity", quantity);
         CV.put("meat_qty", meat_quantity);
         CV.put("m_price", meat_price);
-        db.insert("cart",null,CV);
+        db.insert("cart", null, CV);
         //      }
         db.close();
     }
-    public boolean isProductInCart (int productId){
+
+    public boolean isProductInCart(int productId) {
         //  boolean alreadyInCart = false;
         String query = "SELECT * FROM cart WHERE p_id=" + productId;
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(query, null);
-        if(c.getCount() > 0 ){
+        if (c.getCount() > 0) {
             c.close();
             return true;
-        }else {
+        } else {
             c.close();
             return false;
         }
     }
-    public void removeFromCart(int productId){
+
+    public void removeFromCart(int productId) {
         String query = "DELETE FROM cart WHERE p_id=" + productId;
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL(query);
     }
-    public void clearCart(){
+
+    public void clearCart() {
         String query = "DELETE FROM cart";
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL(query);
@@ -117,12 +122,12 @@ public class CartHelper extends SQLiteOpenHelper {
         db.delete("cart", null, null);*/
     }
 
-    public ArrayList<CartItem>getAllCartProducts(){
+    public ArrayList<CartItem> getAllCartProducts() {
         ArrayList<CartItem> cartList = new ArrayList<>();
         String query = "SELECT * FROM cart";
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(query, null);
-        while(c.moveToNext()){
+        while (c.moveToNext()) {
             CartItem cartItem = new CartItem();
             Product p = new Product();
             int quantity;
@@ -152,7 +157,8 @@ public class CartHelper extends SQLiteOpenHelper {
         db.close();
         return cartList;
     }
-    public int getCartCount(){
+
+    public int getCartCount() {
         String query = "SELECT * FROM cart";
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(query, null);
@@ -160,30 +166,32 @@ public class CartHelper extends SQLiteOpenHelper {
         c.close();
         return count;
     }
-    public int getCartTotalAmount(){
+
+    public int getCartTotalAmount() {
         String query = "SELECT SUM(quantity * p_price) as total_amount FROM cart";
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(query, null);
 
-        if(c.getCount() == 0){
+        if (c.getCount() == 0) {
             c.close();
             return 0;
-        }else {
+        } else {
             c.moveToFirst();
             int totalAmount = c.getInt(c.getColumnIndex("total_amount"));
             c.close();
-            return  totalAmount;
+            return totalAmount;
         }
     }
-    public int  getProductQuantity(int productId){
+
+    public int getProductQuantity(int productId) {
 
         String query = "SELECT quantity FROM cart WHERE p_id=" + productId;
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(query, null);
-        if(c.getCount() == 0){
+        if (c.getCount() == 0) {
             c.close();
             return 0;
-        }else {
+        } else {
             c.moveToFirst();
             int qty = c.getInt(c.getColumnIndex("quantity"));
             c.close();
@@ -191,15 +199,15 @@ public class CartHelper extends SQLiteOpenHelper {
         }
     }
 
-    public int  getMeatQuantity(int productId){
+    public int getMeatQuantity(int productId) {
 
         String query = "SELECT meat_qty FROM cart WHERE p_id=" + productId;
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(query, null);
-        if(c.getCount() == 0){
+        if (c.getCount() == 0) {
             c.close();
             return 0;
-        }else {
+        } else {
             c.moveToFirst();
             int qty = c.getInt(c.getColumnIndex("meat_qty"));
             c.close();

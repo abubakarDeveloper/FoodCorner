@@ -36,16 +36,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.model.AutocompletePrediction;
-import com.google.android.libraries.places.api.model.AutocompleteSessionToken;
-import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.api.model.TypeFilter;
-import com.google.android.libraries.places.api.net.FetchPlaceRequest;
-import com.google.android.libraries.places.api.net.FetchPlaceResponse;
-import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest;
-import com.google.android.libraries.places.api.net.FindAutocompletePredictionsResponse;
-import com.google.android.libraries.places.api.net.PlacesClient;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.mancj.materialsearchbar.adapter.SuggestionsAdapter;
 //import com.skyfishjy.library.RippleBackground;
@@ -59,17 +49,18 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationProviderClient;
-    private PlacesClient placesClient;
-    private List<AutocompletePrediction> predictionList;
+    /*private PlacesClient placesClient;
+    private List<AutocompletePrediction> predictionList;*/
     private Location mLastKnownLocation;
     private LocationCallback locationCallback;
 
     private MaterialSearchBar materialSearchBar;
     private View mapView;
     private Button btnFind;
-   // private RippleBackground rippleBg;
+    // private RippleBackground rippleBg;
 
     private final float DEFAULT_ZOOM = 18;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,14 +71,14 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         materialSearchBar = findViewById(R.id.search_bar);
         btnFind = findViewById(R.id.btn_find);
 
-       // rippleBg = findViewById(R.id.ripple_bg);
+        // rippleBg = findViewById(R.id.ripple_bg);
         final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         mapView = mapFragment.getView();
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(MapActivity.this);
-        Places.initialize(MapActivity.this, "AIzaSyAnSvhXoLp6Oh4anDxJwtxo_be1CEd61b0");
+        /*Places.initialize(MapActivity.this, "AIzaSyAnSvhXoLp6Oh4anDxJwtxo_be1CEd61b0");
         placesClient = Places.createClient(this);
-        final AutocompleteSessionToken token =  AutocompleteSessionToken.newInstance();
+        final AutocompleteSessionToken token =  AutocompleteSessionToken.newInstance();*/
 
         materialSearchBar.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {
             @Override
@@ -103,9 +94,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
             @Override
             public void onButtonClicked(int buttonCode) {
-                if(buttonCode == MaterialSearchBar.BUTTON_NAVIGATION){
+                if (buttonCode == MaterialSearchBar.BUTTON_NAVIGATION) {
                     //opening or closing a drawer layout or navigation drawer
-                }else if(buttonCode == MaterialSearchBar.BUTTON_BACK){
+                } else if (buttonCode == MaterialSearchBar.BUTTON_BACK) {
                     materialSearchBar.disableSearch();
                 }
             }
@@ -121,7 +112,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 //                .setCountry("pk")  //This function//line is used for providing sugestion if your app is using in sepcific country  it's optional line not compulsory
 
-                FindAutocompletePredictionsRequest predictionsRequest = FindAutocompletePredictionsRequest.builder()
+                /*FindAutocompletePredictionsRequest predictionsRequest = FindAutocompletePredictionsRequest.builder()
                         .setCountry("pk")
                         .setTypeFilter(TypeFilter.ADDRESS)
                         .setSessionToken(token)
@@ -148,9 +139,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                             Log.i("myTag", "prediction fetching task is unsuccessfull");
                         }
                     }
-                });
+                });*/
 
-                materialSearchBar.setSuggstionsClickListener(new SuggestionsAdapter.OnItemViewClickListener() {
+                /*materialSearchBar.setSuggstionsClickListener(new SuggestionsAdapter.OnItemViewClickListener() {
                     @Override
                     public void OnItemClickListener(int position, View v) {
                         if(position >= predictionList.size()){
@@ -203,21 +194,22 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     public void OnItemDeleteListener(int position, View v) {
 
                     }
-                });
+                });*/
 
-                       btnFind.setOnClickListener(new View.OnClickListener() {
-                           @Override
-                           public void onClick(View v) {
-                               LatLng currentMarkerLocation  = mMap.getCameraPosition().target;
-                               //rippleBg.startRippleAnimation();
-                               new Handler().postDelayed(new Runnable() {
-                                   @Override
-                                   public void run() {
-                                       startActivity(new Intent(MapActivity.this, MainActivity.class));
-                                   }
-                               }, 3000);
-                           }
-                       });             }
+                btnFind.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        LatLng currentMarkerLocation = mMap.getCameraPosition().target;
+                        //rippleBg.startRippleAnimation();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                startActivity(new Intent(MapActivity.this, MainActivity.class));
+                            }
+                        }, 3000);
+                    }
+                });
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -233,7 +225,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap = googleMap;
         mMap.setMyLocationEnabled(true);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
-        if(mapView != null && mapView.findViewById(Integer.parseInt("1")) != null){
+        if (mapView != null && mapView.findViewById(Integer.parseInt("1")) != null) {
 
             View locationButton = ((View) mapView.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
             RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) locationButton.getLayoutParams();
@@ -260,8 +252,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         task.addOnFailureListener(MapActivity.this, new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                if(e instanceof ResolvableApiException){
-                    ResolvableApiException resolvable  = (ResolvableApiException) e;
+                if (e instanceof ResolvableApiException) {
+                    ResolvableApiException resolvable = (ResolvableApiException) e;
                     try {
                         resolvable.startResolutionForResult(MapActivity.this, 51);
                     } catch (IntentSender.SendIntentException e1) {
@@ -274,13 +266,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
             public boolean onMyLocationButtonClick() {
-                 if(materialSearchBar.isSuggestionsVisible()){
-                     materialSearchBar.clearSuggestions();
-                 }
-                 if(materialSearchBar.isSearchEnabled()){
-                     materialSearchBar.disableSearch();
-                 }
-                 return false;
+                if (materialSearchBar.isSuggestionsVisible()) {
+                    materialSearchBar.clearSuggestions();
+                }
+                if (materialSearchBar.isSearchEnabled()) {
+                    materialSearchBar.disableSearch();
+                }
+                return false;
             }
         });
     }
@@ -289,8 +281,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 51){
-            if(resultCode == RESULT_OK){
+        if (requestCode == 51) {
+            if (resultCode == RESULT_OK) {
                 getDeviceLocation();
             }
         }
@@ -302,23 +294,23 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 .addOnCompleteListener(new OnCompleteListener<Location>() {
                     @Override
                     public void onComplete(@NonNull Task<Location> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             mLastKnownLocation = task.getResult();
-                            if(mLastKnownLocation != null){
+                            if (mLastKnownLocation != null) {
                                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mLastKnownLocation.getAltitude(), mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
-                            }else {
+                            } else {
                                 final LocationRequest locationRequest = LocationRequest.create();
                                 locationRequest.setInterval(10000);
                                 locationRequest.setFastestInterval(5000);
                                 locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-                                locationCallback = new LocationCallback(){
+                                locationCallback = new LocationCallback() {
                                     @Override
                                     public void onLocationResult(LocationResult locationResult) {
                                         super.onLocationResult(locationResult);
-                                        if(locationResult == null){
+                                        if (locationResult == null) {
                                             return;
                                         }
-                                        mLastKnownLocation =locationResult.getLastLocation();
+                                        mLastKnownLocation = locationResult.getLastLocation();
                                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
                                         //this single linne stops updating location repeatedly
                                         //we did this bcas we want location only once
@@ -328,7 +320,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                                 };
                                 mFusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, null);
                             }
-                        }else{
+                        } else {
                             Toast.makeText(MapActivity.this, "Unable to get Last Location", Toast.LENGTH_LONG).show();
                         }
                     }

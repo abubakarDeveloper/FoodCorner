@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class OptionsAdapter extends RecyclerView.Adapter<OptionsAdapter.OptionsHolder>{
+public class OptionsAdapter extends RecyclerView.Adapter<OptionsAdapter.OptionsHolder> {
 
     private ArrayList<Option> dataset;
 
@@ -26,13 +26,13 @@ public class OptionsAdapter extends RecyclerView.Adapter<OptionsAdapter.OptionsH
     }
 
     @Override
-    public void onBindViewHolder(@NonNull OptionsHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final OptionsHolder holder, int position) {
         holder.tvOptionName.setText(dataset.get(position).option_name);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(holder.itemView.getContext(), LinearLayoutManager.VERTICAL, false);
-        OptionValueAdapter optionValueAdapter= new OptionValueAdapter(dataset.get(position).valuesList, new AdapterView.OnItemClickListener() {
+        OptionValueAdapter optionValueAdapter = new OptionValueAdapter(dataset.get(position).valuesList, new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+            public void onItemClick(AdapterView<?> parent, View view, int innerPosition, long id) {
+                dataset.get(holder.getAdapterPosition()).selectedValue = dataset.get(holder.getAdapterPosition()).valuesList.get(innerPosition);
             }
         });
         holder.rvOptionValues.setLayoutManager(linearLayoutManager);
@@ -44,7 +44,7 @@ public class OptionsAdapter extends RecyclerView.Adapter<OptionsAdapter.OptionsH
         return dataset.size();
     }
 
-    class OptionsHolder extends RecyclerView.ViewHolder{
+    class OptionsHolder extends RecyclerView.ViewHolder {
 
         TextView tvOptionName;
         RecyclerView rvOptionValues;

@@ -4,23 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChooseLoginActivity"
-    android:padding="24dp"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:context=".ChooseLoginActivity">
+
     <Button
         android:id="@+id/btn_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login Using Phone"
+        android:layout_marginTop="24dp"
         android:background="@color/colorAccent"
-        android:layout_marginTop="24dp"/>
+        android:text="Login Using Phone" />
+
     <Button
         android:id="@+id/btn_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login Using Email"
+        android:layout_marginTop="24dp"
         android:background="@color/colorAccent"
-        android:layout_marginTop="24dp"/>
+        android:text="Login Using Email" />
 
 </LinearLayout>

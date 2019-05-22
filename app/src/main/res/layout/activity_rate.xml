@@ -22,7 +22,7 @@
             android:textStyle="bold"
             android:textSize="22sp"
             android:layout_margin="22dp"/>
-        <me.zhanghai.android.materialratingbar.MaterialRatingBar
+        <!--<me.zhanghai.android.materialratingbar.MaterialRatingBar
             android:id="@+id/mrb_rating"
             android:layout_gravity="center"
             android:stepSize="0.1"
@@ -30,7 +30,7 @@
             app:mrb_fillBackgroundStars="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialRatingBar.RatingBar" />
+            style="@style/Widget.MaterialRatingBar.RatingBar" />-->
         <Button
             android:id="@+id/btn_rating"
             android:layout_width="wrap_content"
